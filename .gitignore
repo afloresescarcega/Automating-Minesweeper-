@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+#Annoying Vim temp files
+*~
+
+#Annoying Vim swp files
+*.swp
+*.swo
+
 # Distribution / packaging
 .Python
 env/
