@@ -23,7 +23,22 @@ __version__ = "1.0.1"
 __maintainer__ = "Alex Flores Escarcega"
 __email__ = "alex.floresescar@gmail.com"
 __status__ = "Development"
- 
+
+def find_game_region():
+    """
+    Uses image inactive_window.png to find the coordinates of the game
+    Inputs: None
+    Outputs: the tuple of the coordinates of the game window
+    """
+    logging.debug("About to take a screenshot and look for inactive_window.png")
+    coors = pyautogui.locateOnScreen("images/inactive_window.png")
+    if coors is None:
+        logging.debug("Did not find inactive_window.png")
+        logging.debug("Maybe the window is active instead. Will look for active_window.png")
+        coors = pyauto.locateOnscreen("images/inactive_window.png")
+        if coors is None:
+            raise Exception("The game as not found on this screen. Make sure it is visible.")
+
 def main():
     """
     No inputs
