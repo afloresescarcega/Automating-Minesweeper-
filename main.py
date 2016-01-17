@@ -38,6 +38,7 @@ def find_game_region():
         coors = pyauto.locateOnscreen("images/inactive_window.png")
         if coors is None:
             raise Exception("The game as not found on this screen. Make sure it is visible.")
+    return (coors[0],coors[1])
 
 def main():
     """
@@ -45,6 +46,7 @@ def main():
     No outputs
     Starts up the gameregionfinder
     """
+
 
 
 
