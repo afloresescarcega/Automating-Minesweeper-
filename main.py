@@ -24,6 +24,8 @@ __maintainer__ = "Alex Flores Escarcega"
 __email__ = "alex.floresescar@gmail.com"
 __status__ = "Development"
 
+GAME_COORS = (0,0) # Global value that is set by find_game_region
+
 def find_game_region():
     """
     Uses image inactive_window.png to find the coordinates of the game
@@ -35,9 +37,10 @@ def find_game_region():
     if coors is None:
         logging.debug("Did not find inactive_window.png")
         logging.debug("Maybe the window is active instead. Will look for active_window.png")
-        coors = pyauto.locateOnscreen("images/inactive_window.png")
+        coors = pyautogui.locateOnScreen("images/active_window.png")
         if coors is None:
             raise Exception("The game as not found on this screen. Make sure it is visible.")
+    logging.debug("Successfully found the game region: " + str(coors[0],coors[1]))
     return (coors[0],coors[1])
 
 def main():
@@ -46,6 +49,11 @@ def main():
     No outputs
     Starts up the gameregionfinder
     """
+    GAME_COORS = find_game_region()
+    logging.debug("Set the GAME_COORS to:" + str(GAME_COORS))
+
+
+    
 
 
 
